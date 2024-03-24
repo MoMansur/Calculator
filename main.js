@@ -56,14 +56,20 @@ numberButtons.forEach(button => {
 
 //Operator
 let inputOperator = "";
+
+
 operatorButtons.forEach(button => {
   button.addEventListener("click", function(event) {
-    const clickedBtnOperator = event.target;  
+    const clickedButtonOfOperator = event.target;  
+    
+    calc(clickedButtonOfOperator)
 
-    inputOperator = clickedBtnOperator.textContent
-
-    if(clickedBtnOperator === "+"){
-      addition(inputBoxDisplayer,)
+    if(clickedButtonOfOperator.textContent === "+"){
+      console.log(addition(inputBoxDisplayer, lastBoxDisplayer))
+    
+    }else if(clickedButtonOfOperator.textContent === "-"){
+      console.log(addition(inputBoxDisplayer, lastBoxDisplayer))
+    
     }
   });
 });
