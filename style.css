@@ -1,0 +1,101 @@
+body {
+    margin: 10px;
+}
+
+.container{
+    width: 23rem;
+    height: 80vh;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(134 239 172);
+
+}
+
+h2{
+    margin: auto;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    float: right;
+    margin-right: 10px;
+    color:rgb(20 83 45);
+}
+
+#inputbox{
+    border: 1px solid green;
+    width: auto;
+    height: 70px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background-color: rgb(220 252 231);
+    font-size: 20px;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+#first-output{
+    color: green;
+    font-size: 2.0rem;
+    background-color: rgba(0, 0, 0, 0.258);
+}
+
+#result-output{
+    color: green;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(0, 0, 0, 0.258);
+}
+
+
+.numbers{
+    background-color: rgb(134 239 172);
+    margin: auto;
+    margin-left: 10px;
+    position: relative;
+    border-radius: 10px;
+}
+
+button{
+    width: 5rem;
+    height: 5rem;
+	background-color: rgb(21 128 61);    
+    margin: 2px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: rgb(220 252 231);;
+}
+button:hover{
+	background-color: rgb(20 83 45);}
+
+#plus, #minus, #divide, #multiply{
+    width: 5rem;
+    height: 5rem;
+    background-color: rgb(34 197 94);
+    font-size: 20px;
+}
+#plus:hover, #minus:hover, 
+#divide:hover, #multiply:hover{
+	background-color: rgb(20 83 45);}
+
+#equal{
+    float: right;
+    margin-right: 11px;
+    margin-left: 0px;
+    width: 10.5rem;
+    background-color: rgb(34 197 94);
+}
+#clear{
+    float: left;
+    display: inline-block;
+    background-color: rgb(34 197 94);
+    width: 10.5rem;
+  
+}
+
+#equal:hover, #clear:hover{
+	background-color: rgb(20 83 45);}
