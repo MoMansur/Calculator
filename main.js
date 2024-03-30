@@ -25,10 +25,45 @@ let secondEntry = "";
 
 
 class Calculator{
+  constructor(firstInput, currentInput){
+    this.firstInput = firstInput;
+    this.currentInput = currentInput;
+  }
+
+  clear(){
+    this.currentInput = ""
+    this.firstInput = '';
+    this.operator = '';
+  }
+
+  addNumber(number){
+
+  }
+
+  chooseOperation(operation){
+
+  }
+
+  compute(){
+
+  }
+
+  updateDisplay(){
+  }
+
+
+ 
 
 }
 
+let calculator = new Calculator()
 
+numberButtons.forEach(button =>{
+  button.addEventListener('click', () =>{
+    calculator.addNumber(button.innerText)
+    calculator.updateDisplay()
+  })
+})
 
 
 
