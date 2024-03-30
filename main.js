@@ -12,111 +12,136 @@ const equals = document.getElementById('equal')
 const firstOutput =  document.getElementById("first-output");
 const resultOutput =  document.getElementById("result-output");
 
+
+
+const plus = document.querySelector('.plus');
+const minus = document.querySelector('.minus');
+const multiply = document.querySelector('.multiply');
+const divide = document.querySelector('.divide');
+
+
+
 console.log(numberButtons)
+
+
+
+
+function operatorDisplay(e){
+  const operatorClick = e.target;
+  operatorEntry = operatorClick.textContent
+ 
+  firstOutput.innerHTML += operatorEntry
+}
+
+
+//Equals Btn Funtion
+// function equals(){
+//   equalBtn.addEventListener('click', function(){
+//     resultOutput.innerHTML = operation(operatorEntry, firstEntry, secondEntry);
+//   })
+// }
+
+  function operation(operand, operand1, operand2){
+    switch(operand){
+      case '+':
+        return  resultOutput.innerHTML = operand1 + operand2;
+        case '-':
+        return operand1 - operand2;
+        case '*':
+        return operand1 * operand2;
+        case '/':
+          if(operand2 !== 0){
+            return operand1 / operand2;
+          }else{
+            return 'error'
+          }
+    }
+  }
+//Operator Objects
+const operators = {
+  plusObj: plus.addEventListener('click', operatorDisplay),
+  minusObj:minus.addEventListener('click', operatorDisplay),
+  multiplyObj:multiply.addEventListener('click', operatorDisplay),
+  divideObj:divide.addEventListener('click', operatorDisplay),
+}
+
+
 
 //Funtionality Fntio
 
-function functionality(){
-
-let inputBoxDisplayer = "";
 let lastBoxDisplayer = 0;
-
-
 
 //Number Display
 numberButtons.forEach(button => {
-  button.addEventListener("click", function(event) {
-    const clickedButton = event.target;  
-     inputBoxDisplayer += clickedButton.textContent;
+  button.addEventListener("click", displayNumber)});
 
-    if(inputBoxDisplayer === "1"){
-      inputBoxDisplayer = 1;
-    }else  if(inputBoxDisplayer === "2"){
-      inputBoxDisplayer = 2;
-    }else  if(inputBoxDisplayer === "3"){
-      inputBoxDisplayer = 3;
-    }else  if(inputBoxDisplayer === "4"){
-      inputBoxDisplayer = 4;
-    }else  if(inputBoxDisplayer === "5"){
-      inputBoxDisplayer = 5;
-    }else  if(inputBoxDisplayer === "6"){
-      inputBoxDisplayer = 6;
-    }else  if(inputBoxDisplayer === "7"){
-      inputBoxDisplayer = 7;
-    }else  if(inputBoxDisplayer === "8"){
-      inputBoxDisplayer = 8;
-    }else  if(inputBoxDisplayer === "9"){
-      inputBoxDisplayer = 9;
-    }else  if(inputBoxDisplayer === "0"){
-      inputBoxDisplayer = 0;
-    }
-    firstOutput.innerHTML = inputBoxDisplayer;
-  });
-});
-
-//Operator
-let inputOperator = "";
-
-
-operatorButtons.forEach(button => {
-  button.addEventListener("click", function(event) {
-    const clickedButtonOfOperator = event.target;  
-    
-    calc(clickedButtonOfOperator)
-
-    if(clickedButtonOfOperator.textContent === "+"){
-      console.log(addition(inputBoxDisplayer, lastBoxDisplayer))
-    
-    }else if(clickedButtonOfOperator.textContent === "-"){
-      console.log(addition(inputBoxDisplayer, lastBoxDisplayer))
-    
-    }
-  });
-});
-
-//Calc funttion
-function calc(theClickedButton){
-  inputBoxDisplayer += theClickedButton.textContent; 
-  //Display 
-  firstOutput.innerHTML = inputBoxDisplayer;
+function displayNumber(e){
+  const clickedButton = e.target;
+  firstEntry = clickedButton.textContent
+  
+  firstOutput.innerHTML += firstEntry
+  
 }
 
 
 
-//Clear Button
-// clearBtn.addEventListener('click', clear)
-// function clear(){
-//   firstOutput.innerHTML = "";
- 
+
+
+
+
+
+
+
+
+
+
+
+// //Funtion
+// function MainFuntion(){
+
+//   //Varibles
+// let typedNumberFirst = [];
+// const typedOperator = [];
+// let current = "";
+
+// let first= [];
+// let opfirst= "";
+
+
+
+
+// numberButtons.forEach(buttomNum =>{
+//   buttomNum.addEventListener('click', foreachNumber)
+// })
+
+// function foreachNumber(e){
+//     const numButtomClick = e.target;
+//     const numButtomDisplay = numButtomClick.textContent
+
+//     first.push(numButtomDisplay);
+//     console.log(first)
 // }
-// clear()
 
 
-}
-functionality()
-console.log(functionality())
+// firstOutput.innerHTML = first
+// //Operator
+// operatorButtons.forEach(buttonOp => {
+//     buttonOp.addEventListener('click', function(e) {
+//         const optButtonClicked = e.target;
+//         const optButtonDisplay = optButtonClicked.textContent;
 
+//         typedOperator.push(optButtonDisplay);
+        
+//         // Optionally, you can log the array to see its contents after each click
+//         console.log(typedOperator);
+//     });
+// });
+// console.log(typedOperator)
 
+// function display(){
+  
+// }
+// display()
 
-
-
-
-//Addition
-function addition(a,b){
-  return a + b
-}
-console.log(addition(1,5))
-//subtraction
-function subtract(a,b){
-  let solve = a - b;
-  return solve
-}
-//multiplation
-function multiply(a,b){
-  return a * b;
-}
-//divide
-function divide(a,b){
-  return a / b;
-}
-
+// }
+// MainFuntion()//

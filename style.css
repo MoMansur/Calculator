@@ -100,7 +100,7 @@ button:hover{
     background-color: rgb(34 197 94);
 }
 #clear{
-    float: left;
+   
     display: inline-block;
     background-color: rgb(34 197 94);
     width: 10.5rem;
