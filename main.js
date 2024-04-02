@@ -16,12 +16,6 @@ const resultOutput =  document.getElementById("result-output");
 
 
 
-console.log(numberButtons)
-
-
-
-
-
 
 
 
@@ -36,41 +30,52 @@ let current = "";
 let first= [];
 let opfirst= "";
 
+// if(firstOutput.innerHTML =null){
+//   console.log('its empyt')
+// }else{
+//   console.log('NOT empyt')
 
+// }
+console.log(firstOutput.innerHTML)
 
+function pusher(firstEntry){
+
+if(firstEntry === "+"){
+  typedNumberFirst.push(firstEntry)
+  console.log(typedNumberFirst)
+  resultOutput.innerHTML += firstEntry 
+
+}else{
+  firstOutput.innerHTML += firstEntry
+}
+}
 
 numberButtons.forEach(buttomNum =>{
-  buttomNum.addEventListener('click', foreachNumber)
+  buttomNum.addEventListener('click', foreachButton)
 })
 
-function foreachNumber(e){
-    const numButtomClick = e.target;
-    const numButtomDisplay = numButtomClick.textContent
+operatorButtons.forEach(buttomNum =>{
+  buttomNum.addEventListener('click', foreachButton)
+})
 
-    first.push(numButtomDisplay);
-    console.log(first)
+function foreachButton(e){
+    const buttonClick = e.target;
+    const buttonDisplay = buttonClick.textContent
+
+    // switch(buttonDisplay){
+    //   case "+":
+    //     return firstEntry + secondEntry
+    // }
+
+    pusher(buttonDisplay)
 }
 
 
 firstOutput.innerHTML = first
 //Operator
-operatorButtons.forEach(buttonOp => {
-    buttonOp.addEventListener('click', function(e) {
-        const optButtonClicked = e.target;
-        const optButtonDisplay = optButtonClicked.textContent;
 
-        typedOperator.push(optButtonDisplay);
-        
-        // Optionally, you can log the array to see its contents after each click
-        console.log(typedOperator);
-    });
-});
-console.log(typedOperator)
 
-function display(){
-  
-}
-display()
 
 }
+
 MainFuntion()//
