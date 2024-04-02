@@ -21,16 +21,15 @@ const divide = document.querySelector('.divide');
 
 
 
-console.log(numberButtons)
-
 
 
 
 function operatorDisplay(e){
   const operatorClick = e.target;
   operatorEntry = operatorClick.textContent
- 
-  firstOutput.innerHTML += operatorEntry
+
+  pusher(operatorEntry)
+  
 }
 
 
@@ -78,13 +77,29 @@ numberButtons.forEach(button => {
 function displayNumber(e){
   const clickedButton = e.target;
   firstEntry = clickedButton.textContent
-  
-  firstOutput.innerHTML += firstEntry
+  pusher(firstEntry)
+ 
   
 }
 
 
+function pusher(Operate, cal1, cal2){
 
+    firstOutput.innerHTML += Operate
+
+    if(Operate === operators.plusObj)
+    {
+      console.log('hello')
+    }else if(Operate === "-"){
+      firstOutput.innerHTML += "-"
+    }else if(Operate === "*"){
+      firstOutput.innerHTML += "*"
+    }else if(Operate === "/"){
+      firstOutput.innerHTML += "÷"
+    }
+   
+  
+}
 
 
 
