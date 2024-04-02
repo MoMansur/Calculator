@@ -1,21 +1,4 @@
-//Varaibles of the Number and Operator Buttons
-const numberButtons = document.querySelectorAll(".number");
-const operatorButtons = document.querySelectorAll(".operator");
 
-//Varibles for Clear and Equals (Others)
-const clearBtn = document.getElementById('clear');
-const equalBtn = document.getElementById('equal')
-
-//Varaibles of the inputBox and Result output
-const firstOutput =  document.getElementById("first-output");
-const resultOutput =  document.getElementById("result-output");
-
-const plus = document.querySelector(".plus");
-const minus = document.querySelector(".minus");
-const multiply = document.querySelector(".multiply");
-const divide =document.querySelector(".divide");
-
-//result 
 
 //The Main Three
 let firstEntry = "";
@@ -37,7 +20,7 @@ class Calculator{
   }
 
   addNumber(number){
-
+    this.currentInput = number
   }
 
   chooseOperation(operation){
@@ -55,8 +38,23 @@ class Calculator{
  
 
 }
+///ALL 
 
-let calculator = new Calculator()
+//Varaibles of the Number and Operator Buttons
+const numberButtons = document.querySelectorAll(".number");
+const operatorButtons = document.querySelectorAll(".operators");
+
+//Varibles for Clear and Equals (Others)
+const clearBtn = document.getElementById('clear');
+const equalBtn = document.getElementById('equal')
+
+//Varaibles of the inputBox and Result output
+const firstOutput =  document.getElementById("first-output");
+const resultOutput =  document.getElementById("result-output");
+
+
+//CLASS CALLER
+const calculator = new Calculator(firstOutput, resultOutput)
 
 numberButtons.forEach(button =>{
   button.addEventListener('click', () =>{
@@ -64,7 +62,12 @@ numberButtons.forEach(button =>{
     calculator.updateDisplay()
   })
 })
-
+numberButtons.forEach(button =>{
+  button.addEventListener('click', () =>{
+    calculator.addNumber(button.innerText)
+    calculator.updateDisplay()
+  })
+})
 
 
 
