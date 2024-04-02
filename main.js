@@ -87,16 +87,16 @@ function pusher(Operate, cal1, cal2){
 
     firstOutput.innerHTML += Operate
 
-    if(Operate === operators.plusObj)
-    {
-      console.log('hello')
-    }else if(Operate === "-"){
-      firstOutput.innerHTML += "-"
-    }else if(Operate === "*"){
-      firstOutput.innerHTML += "*"
-    }else if(Operate === "/"){
-      firstOutput.innerHTML += "÷"
-    }
+    // if(Operate === operators.plusObj)
+    // {
+    //   console.log('hello')
+    // }else if(Operate === "-"){
+    //   firstOutput.innerHTML += "-"
+    // }else if(Operate === "*"){
+    //   firstOutput.innerHTML += "*"
+    // }else if(Operate === "/"){
+    //   firstOutput.innerHTML += "÷"
+    // }
    
   
 }
