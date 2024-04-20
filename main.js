@@ -16,19 +16,16 @@ const resultOutput =  document.getElementById("result-output");
 
 
 
-
+let firstInput = '';
+let OperatorInput = '';
+let secondInput = '';
 
 
 //Funtion
 function MainFuntion(){
 
   //Varibles
-let typedNumberFirst = [];
-const typedOperator = [];
-let current = "";
-
-let first= [];
-let opfirst= "";
+let operatorVar= "";
 
 // if(firstOutput.innerHTML =null){
 //   console.log('its empyt')
@@ -36,19 +33,36 @@ let opfirst= "";
 //   console.log('NOT empyt')
 
 // }
+
+function Calculation(operand, operand1, operand2){
+  switch(operand){
+    case '+':
+      return  resultOutput.innerHTML = operand1 + operand2;
+      case '-':
+      return operand1 - operand2;
+      case '*':
+      return operand1 * operand2;
+      case '/':
+        if(operand2 !== 0){
+          return operand1 / operand2;
+        }else{
+          return 'error'
+        }
+  }
+}
 console.log(firstOutput.innerHTML)
 
 function pusher(firstEntry){
 
-if(firstEntry === "+"){
-  typedNumberFirst.push(firstEntry)
-  console.log(typedNumberFirst)
-  resultOutput.innerHTML += firstEntry 
+if(firstEntry === "+" || "-" || "*" || "/"){
+  operatorVar = firstEntry
+  console.log(operatorVar)
+  if(operatorVar === "+"){
+     Calculation(operatorVar)
+  }
+}
+}
 
-}else{
-  firstOutput.innerHTML += firstEntry
-}
-}
 
 numberButtons.forEach(buttomNum =>{
   buttomNum.addEventListener('click', foreachButton)
@@ -71,7 +85,6 @@ function foreachButton(e){
 }
 
 
-firstOutput.innerHTML = first
 //Operator
 
 
