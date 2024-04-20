@@ -1,43 +1,3 @@
-
-
-//The Main Three
-let firstEntry = "";
-let operatorEntry = "";
-let secondEntry = "";
-
-
-
-class Calculator{
-  constructor(firstInput, currentInput){
-    this.firstInput = firstInput;
-    this.currentInput = currentInput;
-  }
-
-  clear(){
-    this.currentInput = ""
-    this.firstInput = '';
-    this.operator = '';
-  }
-
-  addNumber(number){
-    this.currentInput = number
-  }
-
-  chooseOperation(operation){
-
-  }
-
-  compute(){
-
-  }
-
-  updateDisplay(){
-  }
-
-
- 
-
-}
 ///ALL 
 
 //Varaibles of the Number and Operator Buttons
@@ -47,14 +7,89 @@ const operatorButtons = document.querySelectorAll(".operators");
 //Varibles for Clear and Equals (Others)
 const clearBtn = document.getElementById('clear');
 const equalBtn = document.getElementById('equal')
+const deleteBtn =document.getElementById('delete')
 
 //Varaibles of the inputBox and Result output
-const firstOutput =  document.getElementById("first-output");
-const resultOutput =  document.getElementById("result-output");
+const prevInputConnect =  document.getElementById("first-output");
+const currInputConnect =  document.getElementById("result-output");
 
 
+class Calculator{
+  constructor(prevInput,currInput){
+    this.prevInput = prevInput;
+    this.currInput = currInput;
+    this.clear()
+  }
+
+  clear(){
+    this.currentOperand = '';
+    this.prevOperand = '';
+    this.operator = undefined
+  }
+
+  addNumber(number){
+    if(number === "." && this.currentOperand.includes('.'))return
+    this.currentOperand = this.currentOperand.toString() + number.toString()
+  }
+
+  chooseOperation(operation){
+    if(this.currentOperand === '')return
+    if(this.prevOperand !== ''){
+      this.compute()
+    }
+    this.operation = operation
+    this.prevOperand = this.currentOperand + operation
+    this.currentOperand = ''
+  }
+
+  delete(){
+    this.currentOperand = this.currentOperand.toString().slice(0,-1)
+  }
+
+  compute(){
+    let computation 
+    const prev = parseFloat(this.prevOperand)
+    const current = parseFloat(this.currentOperand)
+    if(isNaN(prev) || isNaN(current))return
+    
+    switch(this.operation){
+      case '+':
+        computation = prev + current
+        break
+        case '-':
+        computation = prev - current
+        break
+        case '*':
+        computation = prev * current
+        break
+        case '/':
+        computation = prev / current
+        break
+        default:
+          return
+    }
+    this.currentOperand = computation
+    this.operation = undefined
+    this.prevOperand = ''
+  }
+
+  updateDisplay(){
+    this.currInput.innerText  = this.currentOperand;
+    this.prevInput.innerText = this.prevOperand
+  }
+
+  log(domConnect){
+
+  }
+
+
+}
+
+const log = document.querySelector('.logList')
 //CLASS CALLER
-const calculator = new Calculator(firstOutput, resultOutput)
+const calculator = new Calculator(prevInputConnect, currInputConnect)
+
+calculator.log(log)
 
 numberButtons.forEach(button =>{
   button.addEventListener('click', () =>{
@@ -62,15 +97,32 @@ numberButtons.forEach(button =>{
     calculator.updateDisplay()
   })
 })
-numberButtons.forEach(button =>{
+
+operatorButtons.forEach(button =>{
   button.addEventListener('click', () =>{
-    calculator.addNumber(button.innerText)
+    calculator.chooseOperation(button.innerText)
     calculator.updateDisplay()
   })
 })
 
 
 
+//Clear, Delete and Equal Btn Event 
+
+clearBtn.addEventListener("click", button => {
+  calculator.clear()
+  calculator.updateDisplay()
+})
+
+equalBtn.addEventListener("click", button => {
+  calculator.compute()
+  calculator.updateDisplay()
+})
+
+deleteBtn.addEventListener("click", button => {
+  calculator.delete()
+  calculator.updateDisplay()
+})
 
 
 
