@@ -1,12 +1,21 @@
 body {
-   padding: 30px;
-   margin: 40px;
-  
+    background: rgb(0,49,85);
+    background: linear-gradient(90deg, rgba(0,49,85,1) 0%, rgba(122,255,157,1) 28%, rgba(135,239,171,1) 63%, rgba(134,241,170,1) 84%, rgb(35, 116, 101) 97%);
+    background-repeat: repeat-y;
+ 
+}
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(7, 125, 41);
+    margin: 10px;
+}
+.container{
+    width: auto;
+    display: flex;
+   
 }
 
-.container{
-    display: flex;
-}
 .Calculator-Container{
     width: 22rem;
     height: 80vh;
@@ -16,6 +25,7 @@ body {
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(134 239 172);
+    position: relative;
 
 }
 
@@ -40,7 +50,6 @@ h2{
     word-break: break-all;
 }
 
-
 #first-output{
     color: green;
     font-size: 2.0rem;
@@ -56,30 +65,17 @@ h2{
     font-size: 2.5rem;
     display: flex;
     justify-content: flex-end;
-   
-
 }
 
 
-
-.numbers{
-    background-color: rgb(134 239 172);
-    margin: auto;
-    margin-left: 10px;
-    position: relative;
-    border-radius: 10px;
-}
-.operator{
-    background-color: rgb(34 197 94);
-
-}
 button{
     width: 5rem;
     height: 5rem;
-	background-color: rgb(21 128 61);    
+	background-color: rgb(21 128 61);   
+
     margin: 2px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 22px;
     color: rgb(220 252 231);;
 }
 button:hover{
@@ -91,30 +87,67 @@ button:hover{
     background-color: rgb(34 197 94);
 }
 #clear{
-  
-    display: inline-block;
-    background-color: rgb(34 197 94);
+    background-color: rgb(1, 127, 47);
     width: 10.5rem;
-  
 }
 
 #equal:hover, #clear:hover{
 	background-color: rgb(20 83 45);}
 
 
-
+/*History*/
 #log{
-    background-color: rgb(134 239 172);
+
     color: green;
-    border: 1px solid black;
-    padding: 10px;
+    border: 1px solid green;
+    padding: 3px;
     width: 20rem;
+    margin: auto;
     height: auto;
-    border-radius: 20px;
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgb(134 239 172);
+
 }
 
-h4{
- 
+li{
+    background-color: rgb(34 197 94);
+    font-size: 1.1rem;
+    width: 200px;
+    max-width: 300px; 
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 40px;
+    color: black;
+    font-family: sans-serif;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+span{
+    background-color: rgb(34 197 94);
+    width: 60px; 
+    height: 40px, auto;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 40px;
+    margin: 5px;
+    font-size: 1.1rem;
+    color: black;
+    font-family: sans-serif;
+}
+.clearAllBtn{
+    width: 100px;
+    height: 30px;
+    font-size: medium;
+}
+
+h3{
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
 }
 
 

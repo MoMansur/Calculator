@@ -46,12 +46,12 @@ class Calculator{
     this.currentOperand = this.currentOperand.toString().slice(0,-1)
   }
 
-  compute(){
+  compute(domConnect){
     let computation 
     const prev = parseFloat(this.prevOperand)
     const current = parseFloat(this.currentOperand)
     if(isNaN(prev) || isNaN(current))return
-    
+
     switch(this.operation){
       case '+':
         computation = prev + current
@@ -62,15 +62,22 @@ class Calculator{
         case '*':
         computation = prev * current
         break
-        case '/':
+        case '÷':
         computation = prev / current
         break
         default:
           return
     }
     this.currentOperand = computation
-    this.operation = undefined
+    // this.operation = undefined
     this.prevOperand = ''
+    
+
+    if (computation === ''){
+      domConnect.innerHTML= ""
+    }else{
+      domConnect.innerHTML += "<li>" +prev + " "+this.operation+" "+ current +"</li>" + `<span>` + computation + "</span>"
+    }
   }
 
   updateDisplay(){
@@ -78,9 +85,7 @@ class Calculator{
     this.prevInput.innerText = this.prevOperand
   }
 
-  log(domConnect){
 
-  }
 
 
 }
@@ -89,7 +94,7 @@ const log = document.querySelector('.logList')
 //CLASS CALLER
 const calculator = new Calculator(prevInputConnect, currInputConnect)
 
-calculator.log(log)
+
 
 numberButtons.forEach(button =>{
   button.addEventListener('click', () =>{
@@ -109,21 +114,24 @@ operatorButtons.forEach(button =>{
 
 //Clear, Delete and Equal Btn Event 
 
+function logings(){
+    console.log('EQUAL CLICKED')
+}
+
 clearBtn.addEventListener("click", button => {
   calculator.clear()
   calculator.updateDisplay()
 })
 
 equalBtn.addEventListener("click", button => {
-  calculator.compute()
-  calculator.updateDisplay()
+  calculator.compute(log)
+  calculator.updateDisplay() 
 })
 
 deleteBtn.addEventListener("click", button => {
   calculator.delete()
   calculator.updateDisplay()
 })
-
 
 
 
