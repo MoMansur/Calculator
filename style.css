@@ -1,11 +1,23 @@
 body {
-    margin: 40px;
-    background: url(/img/photo.jpg) no-repeat center center/cover;
-    height: 100vh;
+    background: rgb(0,49,85);
+    background: linear-gradient(90deg, rgba(0,49,85,1) 0%, rgba(122,255,157,1) 28%, rgba(135,239,171,1) 63%, rgba(134,241,170,1) 84%, rgb(35, 116, 101) 97%);
+    background-repeat: repeat-y;
+    padding: 20px;
+ 
+}
+h1{
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(7, 125, 41);
+    margin: 10px;
+}
+.container{
+    width: auto;
+    display: flex;
 }
 
-.container{
-    width: 23rem;
+.Calculator-Container{
+    width: 22rem;
     height: 80vh;
     margin: auto;
     border: 1px solid;
@@ -13,16 +25,16 @@ body {
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgb(134 239 172);
+    position: relative;
 
 }
 
 h2{
     margin: auto;
-    margin-bottom: 10px;
     font-size: 0.8rem;
     float: right;
     margin-right: 10px;
-    color:rgb(20 83 45);
+    color:rgb(0, 70, 28);
 }
 
 #inputbox{
@@ -38,13 +50,14 @@ h2{
     word-break: break-all;
 }
 
-
 #first-output{
     color: green;
     font-size: 2.0rem;
     background-color: rgba(0, 0, 0, 0.258);
     display: flex;
     justify-content: flex-end;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 #result-output{
@@ -52,60 +65,103 @@ h2{
     font-size: 2.5rem;
     display: flex;
     justify-content: flex-end;
-    background-color: rgba(0, 0, 0, 0);
 }
 
-
-
-
-
-
-
-
-.numbers{
-    background-color: rgb(134 239 172);
-    margin: auto;
-    margin-left: 10px;
-    position: relative;
-    border-radius: 10px;
-}
 
 button{
     width: 5rem;
     height: 5rem;
-	background-color: rgb(21 128 61);    
+	background-color: rgb(21 128 61);   
+
     margin: 2px;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 22px;
     color: rgb(220 252 231);;
 }
 button:hover{
 	background-color: rgb(20 83 45);}
 
-#plus, #minus, #divide, #multiply{
-    width: 5rem;
-    height: 5rem;
-    background-color: rgb(34 197 94);
-    font-size: 20px;
-}
-#plus:hover, #minus:hover, 
-#divide:hover, #multiply:hover{
-	background-color: rgb(20 83 45);}
 
 #equal{
-    float: right;
-    margin-right: 20px;
-    margin-left: 0px;
-    width: 10rem;
+    width: 10.5rem;
     background-color: rgb(34 197 94);
 }
 #clear{
-   
-    display: inline-block;
-    background-color: rgb(34 197 94);
+    background-color: rgb(1, 127, 47);
     width: 10.5rem;
-  
 }
 
 #equal:hover, #clear:hover{
 	background-color: rgb(20 83 45);}
+
+
+/*History*/
+#log{
+
+    color: green;
+    border: 1px solid green;
+    padding: 3px;
+    width: 20rem;
+    max-width: 30rem;
+    margin: auto;
+    height: auto;
+    position: absolute;
+    border-radius: 10px;
+    background-color: rgb(134 239 172);
+
+}
+
+li{
+    background-color: rgb(34 197 94);
+    font-size: 1.1rem;
+    width: 14rem;
+    max-width: 25rem; 
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 40px;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-left: -30px;
+}
+span{
+    background-color: rgb(34 197 94);
+    width: 70px; 
+    height: 40px, auto;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+    line-height: 40px;
+    margin: 5px;
+    font-size: 1.1rem;
+    color: white;
+    font-family: sans-serif;
+}
+.clearAllBtn{
+    width: 100px;
+    height: 30px;
+    font-size: medium;
+}
+
+h3{
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+}
+
+
+
+footer img {
+    width: 22px;
+    height: 22px;
+    margin-left: 4px;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}

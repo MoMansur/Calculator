@@ -1,105 +1,130 @@
+///ALL 
 
 //Varaibles of the Number and Operator Buttons
 const numberButtons = document.querySelectorAll(".number");
-const operatorButtons = document.querySelectorAll(".operator");
-
+const operatorButtons = document.querySelectorAll(".operators");
 
 //Varibles for Clear and Equals (Others)
 const clearBtn = document.getElementById('clear');
-const equals = document.getElementById('equal')
+const equalBtn = document.getElementById('equal')
+const deleteBtn =document.getElementById('delete')
 
 //Varaibles of the inputBox and Result output
-const firstOutput =  document.getElementById("first-output");
-const resultOutput =  document.getElementById("result-output");
+const prevInputConnect =  document.getElementById("first-output");
+const currInputConnect =  document.getElementById("result-output");
 
 
+class Calculator{
+  constructor(prevInput,currInput){
+    this.prevInput = prevInput;
+    this.currInput = currInput;
+    this.clear()
+  }
 
-const plus = document.querySelector('.plus');
-const minus = document.querySelector('.minus');
-const multiply = document.querySelector('.multiply');
-const divide = document.querySelector('.divide');
+  clear(){
+    this.currentOperand = '';
+    this.prevOperand = '';
+    this.operator = undefined
+  }
 
+  addNumber(number){
+    if(number === "." && this.currentOperand.includes('.'))return
+    this.currentOperand = this.currentOperand.toString() + number.toString()
+  }
 
+  chooseOperation(operation){
+    if(this.currentOperand === '')return
+    if(this.prevOperand !== ''){
+      this.compute()
+    }
+    this.operation = operation
+    this.prevOperand = this.currentOperand + operation
+    this.currentOperand = ''
+  }
 
+  delete(){
+    this.currentOperand = this.currentOperand.toString().slice(0,-1)
+  }
 
+  compute(domConnect){
+    let computation 
+    const prev = parseFloat(this.prevOperand)
+    const current = parseFloat(this.currentOperand)
+    if(isNaN(prev) || isNaN(current))return
 
-
-function operatorDisplay(e){
-  const operatorClick = e.target;
-  operatorEntry = operatorClick.textContent
-
-  pusher(operatorEntry)
-  
-}
-
-
-//Equals Btn Funtion
-// function equals(){
-//   equalBtn.addEventListener('click', function(){
-//     resultOutput.innerHTML = operation(operatorEntry, firstEntry, secondEntry);
-//   })
-// }
-
-  function operation(operand, operand1, operand2){
-    switch(operand){
+    switch(this.operation){
       case '+':
-        return  resultOutput.innerHTML = operand1 + operand2;
+        computation = prev + current
+        break
         case '-':
-        return operand1 - operand2;
+        computation = prev - current
+        break
         case '*':
-        return operand1 * operand2;
-        case '/':
-          if(operand2 !== 0){
-            return operand1 / operand2;
-          }else{
-            return 'error'
-          }
+        computation = prev * current
+        break
+        case '÷':
+        computation = prev / current
+        break
+        default:
+          return
+    }
+    this.currentOperand = computation
+    // this.operation = undefined
+    this.prevOperand = ''
+    
+
+    if (computation === ''){
+      domConnect.innerHTML= ""
+    }else{
+      domConnect.innerHTML += "<li>" +prev + " "+this.operation+" "+ current +"</li>" + `<span>` + computation + "</span>"
     }
   }
-//Operator Objects
-const operators = {
-  plusObj: plus.addEventListener('click', operatorDisplay),
-  minusObj:minus.addEventListener('click', operatorDisplay),
-  multiplyObj:multiply.addEventListener('click', operatorDisplay),
-  divideObj:divide.addEventListener('click', operatorDisplay),
+
+  updateDisplay(){
+    this.currInput.innerText  = this.currentOperand;
+    this.prevInput.innerText = this.prevOperand
+  }
+
 }
 
+const log = document.querySelector('.logList')
+//CLASS CALLER
+const calculator = new Calculator(prevInputConnect, currInputConnect)
 
 
-//Funtionality Fntio
+numberButtons.forEach(button =>{
+  button.addEventListener('click', () =>{
+    calculator.addNumber(button.innerText)
+    calculator.updateDisplay()
+  })
+})
 
-let lastBoxDisplayer = 0;
+operatorButtons.forEach(button =>{
+  button.addEventListener('click', () =>{
+    calculator.chooseOperation(button.innerText)
+    calculator.updateDisplay()
+  })
+})
 
-//Number Display
-numberButtons.forEach(button => {
-  button.addEventListener("click", displayNumber)});
-
-function displayNumber(e){
-  const clickedButton = e.target;
-  firstEntry = clickedButton.textContent
-  pusher(firstEntry)
- 
-  
+//Clear, Delete and Equal Btn Event 
+function logings(){
+    console.log('EQUAL CLICKED')
 }
 
+clearBtn.addEventListener("click", button => {
+  calculator.clear()
+  calculator.updateDisplay()
+})
 
-function pusher(Operate, cal1, cal2){
+equalBtn.addEventListener("click", button => {
+  calculator.compute(log)
+  calculator.updateDisplay() 
+})
 
-    firstOutput.innerHTML += Operate
-
-    // if(Operate === operators.plusObj)
-    // {
-    //   console.log('hello')
-    // }else if(Operate === "-"){
-    //   firstOutput.innerHTML += "-"
-    // }else if(Operate === "*"){
-    //   firstOutput.innerHTML += "*"
-    // }else if(Operate === "/"){
-    //   firstOutput.innerHTML += "÷"
-    // }
-   
-  
-}
+deleteBtn.addEventListener("click", button => {
+  calculator.delete()
+  calculator.updateDisplay()
+})
 
 
 
@@ -111,52 +136,14 @@ function pusher(Operate, cal1, cal2){
 
 
 
-// //Funtion
-// function MainFuntion(){
-
-//   //Varibles
-// let typedNumberFirst = [];
-// const typedOperator = [];
-// let current = "";
-
-// let first= [];
-// let opfirst= "";
 
 
 
 
-// numberButtons.forEach(buttomNum =>{
-//   buttomNum.addEventListener('click', foreachNumber)
-// })
-
-// function foreachNumber(e){
-//     const numButtomClick = e.target;
-//     const numButtomDisplay = numButtomClick.textContent
-
-//     first.push(numButtomDisplay);
-//     console.log(first)
-// }
 
 
-// firstOutput.innerHTML = first
-// //Operator
-// operatorButtons.forEach(buttonOp => {
-//     buttonOp.addEventListener('click', function(e) {
-//         const optButtonClicked = e.target;
-//         const optButtonDisplay = optButtonClicked.textContent;
 
-//         typedOperator.push(optButtonDisplay);
-        
-//         // Optionally, you can log the array to see its contents after each click
-//         console.log(typedOperator);
-//     });
-// });
-// console.log(typedOperator)
 
-// function display(){
-  
-// }
-// display()
 
-// }
-// MainFuntion()//
+
+
