@@ -85,15 +85,11 @@ class Calculator{
     this.prevInput.innerText = this.prevOperand
   }
 
-
-
-
 }
 
 const log = document.querySelector('.logList')
 //CLASS CALLER
 const calculator = new Calculator(prevInputConnect, currInputConnect)
-
 
 
 numberButtons.forEach(button =>{
@@ -110,10 +106,7 @@ operatorButtons.forEach(button =>{
   })
 })
 
-
-
 //Clear, Delete and Equal Btn Event 
-
 function logings(){
     console.log('EQUAL CLICKED')
 }
